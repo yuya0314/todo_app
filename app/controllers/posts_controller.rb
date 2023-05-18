@@ -4,7 +4,8 @@ class PostsController < ApplicationController
   def create
     @posts = Post.new(
       title:params[:title],
-      memo:params[:memo])
+      memo:params[:memo],
+      start:params[:start])
     @posts.save
     redirect_to("/")
   end
@@ -12,4 +13,25 @@ class PostsController < ApplicationController
   def index
     @posts = Post.all
   end
+
+  def show
+    @post = Post.find_by(id:params[:id])
+  end
+  def edit
+    @post = Post.find_by(id:params[:id])
+  end
+  def update
+    @post = Post.find_by(id:params[:id])
+    @post.title = params[:title]
+    @post.memo = params[:memo]
+    @post.save
+    redirect_to("/")
+  end
+  
+  def destroy
+    @post = Post.find_by(id: params[:id])
+    @post.destroy
+    redirect_to("/")
+  end
+
 end

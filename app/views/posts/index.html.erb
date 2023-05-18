@@ -21,13 +21,13 @@
        <tr>
         <td><%=post.id %></td>
         <td><%=post.title %></td>
-        <td><%=post.memo %></td>
+        <td><%=post.start %></td>
         <td>2022/3/14日</td>
         <td>o</td>
         <td>2022/3/15</td>
-        <td>詳細</td>
-        <td>編集</td>
-        <td>削除</td>
+        <td><%=link_to("詳細","/posts/#{post.id}")%></td>
+        <td><%=link_to("編集","/posts/#{post.id}/edit")%></td>
+        <td><%=link_to("削除","/posts/#{post.id}/destroy",data: { "turbo-method": :post })%></td>
       </tr>
       <%end%>
       
