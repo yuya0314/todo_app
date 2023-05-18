@@ -1,3 +1,5 @@
 Rails.application.routes.draw do
-  root "hello#index"
+  get 'posts/new' => "posts#new"
+  get "/" =>"hello#index"
+  #root "hello#index"
 end
