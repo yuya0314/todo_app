@@ -21,10 +21,10 @@
        <tr>
         <td><%=post.id %></td>
         <td><%=post.title %></td>
-        <td><%=post.begin%></td>
-        <td><%=post.last%></td>
+        <td><%=post.begin.strftime("%Y/%m/%d")%></td>
+        <td><%=post.last.strftime("%Y/%m/%d")%></td>
         <td>o</td>
-        <td>2022/3/15</td>
+        <td><%=post.updated_at.strftime("%Y/%m/%d %R")%></td>
         <td><%=link_to("詳細","/posts/#{post.id}")%></td>
         <td><%=link_to("編集","/posts/#{post.id}/edit")%></td>
         <td><%=link_to("削除","/posts/#{post.id}/destroy",data: { "turbo-method": :post })%></td>
