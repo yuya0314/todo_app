@@ -6,7 +6,8 @@ class PostsController < ApplicationController
       title:params[:title],
       memo:params[:memo],
       begin:params[:begin],
-      last:params[:last]
+      last:params[:last],
+      alltime:params[:alltime]
       )
     @posts.save
     redirect_to("/")
