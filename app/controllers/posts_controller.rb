@@ -9,8 +9,13 @@ class PostsController < ApplicationController
       last:params[:last],
       alltime:params[:alltime]
       )
-    @posts.save
-    redirect_to("/")
+      if @posts.memo == 0
+      end
+     if @posts.save
+       redirect_to("/")
+     else flash[:notice] ="入力が間違っています"
+      redirect_to("/posts/new")
+     end
   end
 
   def index
