@@ -1,11 +1,8 @@
 
 <div class="contents">
   <div class="title">
-    <h1>Home#top</h1>
-<p>新規追加</p>
-<%= link_to("新規追加","/posts/new")%>
+    <%= link_to("新規追加","/posts/new")%>
   </div>
-  
   <div class="main">
     <table>
       <tr>
@@ -17,8 +14,8 @@
         <td>更新日時</td>
         <td colspan ="3"></td>
       </tr>
-      <% @posts.each do |post| %>
-       <tr>
+    <% @posts.each do |post| %>
+      <tr>
         <td><%=post.id %></td>
         <td><%=post.title %></td>
         <td><%=post.begin.strftime("%Y/%m/%d")%></td>
@@ -27,15 +24,16 @@
         <td><%=post.updated_at.strftime("%Y/%m/%d %R")%></td>
         <td><%=link_to("詳細","/posts/#{post.id}")%></td>
         <td><%=link_to("編集","/posts/#{post.id}/edit")%></td>
-        <td><%=link_to("削除","/posts/#{post.id}/destroy",data: { "turbo-method": :post })%></td>
+        <td><%=link_to("削除","/posts/#{post.id}/destroy",
+                       data: { "turbo-method": :post, 
+                       "turbo_confirm": "予定を削除しますか？" } )%> 
+        </td>
       </tr>
-      <%end%>
-      
+    <%end%>
     </table>
   </div>
   <div class="count">
-
-
+  <p>予定合計 <%=@posts.length%>件 </p>
+  <p> 本日の日付 <%=Date.today.strftime("%Y/%m/%d") %> <p>
   </div>
-
 </div>
