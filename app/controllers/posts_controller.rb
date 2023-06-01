@@ -13,8 +13,8 @@ class PostsController < ApplicationController
       end
      if @posts.save
        redirect_to("/")
-     else flash[:notice] ="入力が間違っています"
-      redirect_to("/posts/new")
+     else flash[:notice] ="入力内容を確認してくだい"
+      render("/posts/new")
      end
   end
 
@@ -23,17 +23,21 @@ class PostsController < ApplicationController
   end
 
   def show
-    @post = Post.find_by(id:params[:id])
+    @posts = Post.find_by(id:params[:id])
   end
   def edit
-    @post = Post.find_by(id:params[:id])
+    @posts = Post.find_by(id:params[:id])
   end
   def update
-    @post = Post.find_by(id:params[:id])
-    @post.title = params[:title]
-    @post.memo = params[:memo]
-    @post.save
-    redirect_to("/")
+    @posts = Post.find_by(id:params[:id])
+    @posts.title = params[:title]
+    @posts.memo = params[:memo]
+    if @posts.save
+      redirect_to("/")
+    else 
+      flash[:notice] = "入力内容を確認してください"
+      redirect_to("/posts/@posts.id.edit")
+    end
   end
   
   def destroy

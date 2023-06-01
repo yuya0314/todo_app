@@ -1,12 +1,25 @@
-<div class=contents>
-<h1>編集</h1>
-<div class=contents>
-<%= form_tag("/posts/#{@post.id}/update")do %>
-  <p>タイトル</p>
-  <input name="title" value="<%=@post.title%>">
-  <p>スケジュールメモ</p>
-  <textarea name="memo"><%=@post.memo %></textarea>
+<div class="new">
+
+          <h1>
+          もうあかん
+            <%=@posts.errors.full_messages[0]%>
+          </h1>
+  
+<h3>編集</h3>
+<%= form_tag("/posts/#{@posts.id}/update")do %>
+  <div class="title">タイトル </div>
+  <input class="form" type="text" name="title" value="<%=@posts.title%>">
+  <div class="title">開始日 
+  <input type="date" name="begin" value="<%=@posts.begin%>">
+  </div>
+  <div class="title">終了日
+  <input type="date" name="last" value="<%=@posts.last%>" >
+  </div>
+  <p>
+  <input type="checkbox" name="alltime" >
+  終日の場合はチェックを入れてください
+  <div class="title">スケジュールメモ</div>
+  <textarea name="memo" class="form"><%=@posts.memo %></textarea>
   <input type="submit" value="保存">
   <%  end %>
-  <%=@post.a>
 </div>

@@ -1,11 +1,32 @@
 <div class=contents>
-<h1>詳細</h1>
-<div class=contents>
-  <p>タイトル</p>
-  <%=@post.title %>
-  
-  <p>スケジュールメモ</p>
-  <%=@post.memo %>
- 
- 
+  <div class="title">
+  <p class="count"><%=link_to("編集","/posts/#{@posts.id}/edit")%></p>
+  <p class="date_today">  <%=link_to("一覧に戻る","/")%></p>
+  </div>
+  <table>
+  <tr>
+    <td>タイトル</td>
+    <td><%=@posts.title%></td>
+  </tr>
+  <tr>
+    <td>開始日</td>
+    <td><%=@posts.begin.strftime("%Y/%m/%d")%></td>
+  </tr>
+  <tr>
+    <td>開始日</td>
+    <td><%=@posts.begin.strftime("%Y/%m/%d")%></td>
+  </tr>
+  <tr>
+    <td>終了日</td>
+    <td><%=@posts.last.strftime("%Y/%m/%d")%></td>
+  </tr>
+  <tr>
+    <td>終日</td>
+    <td><%=@posts.alltime %></td>
+  </tr>
+  <tr>
+    <td>スケジュールメモ</td>
+    <td><%=@posts.memo %></td>
+    </tr>
+  </table>
 </div>

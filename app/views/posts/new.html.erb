@@ -1,15 +1,19 @@
-<div class=contents>
-<h1>予定の新規追加</h1>
-<div class=contents>
+<div class="new">
+<h3>予定の新規追加</h3>
 <%= form_tag("/posts/create")do %>
-  <p>タイトル</p>
-  <input name="title" >
+  <div class="title">タイトル </div>
+  <input class="form" type="text" name="title" >
+  <div class="title">開始日 
   <input type="date" name="begin" >
+  </div>
+  <div class="title">終了日
   <input type="date" name="last" >
+  </div>
+  <p>
   <input type="checkbox" name="alltime" value ="○" >
-  <p>スケジュールメモ</p>
-  <textarea name="memo"></textarea>
+  終日の場合はチェックを入れてください
+  <div class="title">スケジュールメモ</div>
+  <textarea name="memo" class="form"></textarea>
   <input type="submit" value="保存">
   <%  end %>
-  <%=@post.a>
 </div>
